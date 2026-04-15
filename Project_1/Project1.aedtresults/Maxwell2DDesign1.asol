@@ -1,0 +1,90 @@
+$begin '$base_index$'
+  $begin 'properties'
+    all_levels=000000000000
+    time(year=000000002026, month=000000000004, day=000000000015, hour=000000000018, min=000000000040, sec=000000000052)
+    version=000000000000
+  $end 'properties'
+  $begin '$base_index$'
+    $index$(pos=000000002112, lin=000000000070, lvl=000000000000)
+  $end '$base_index$'
+$end '$base_index$'
+$begin 'SolutionBlock1'
+	ProductName=''
+	CircuitName='Maxwell2DDesign1'
+	VersionID=333
+	PostProcess=false
+	LossLess=true
+	NextUniqueID=373
+	MoveBackwards=false
+	$begin 'VariationIDs'
+		Map(V='$theta=\'0deg\'', ID=167)
+	$end 'VariationIDs'
+	$begin 'LinkedDataList'
+	$end 'LinkedDataList'
+	$begin 'InitialMeshes'
+		M(VID=167, Ver=333, Dir='DV167_V333.imesh/')
+	$end 'InitialMeshes'
+	$begin 'MI'
+		$begin 'SubData'
+			ID=0
+			MI(VID=167, Ver=333, Dir='DV167_MI0_V333.sd/')
+		$end 'SubData'
+	$end 'MI'
+$end 'SolutionBlock1'
+$begin 'BlockMapName'
+	FileHeader='SolutionBlock1'
+	'SolutionKey(SimSetup=163, Instance=\'SetupDefinition\', Solution=-1, VersionID=333)'='SolutionBlock18'
+	'SolutionKey(SimSetup=163, Instance=\'SolutionDefinition\', Solution=164, VersionID=333)'='SolutionBlock16'
+	'SolutionKey(SimSetup=163, Instance=\'SolutionDefinition\', Solution=165, VersionID=333)'='SolutionBlock17'
+$end 'BlockMapName'
+$begin 'SolutionBlock18'
+	SimSetupID=163
+	SimSetupName='Setup1'
+	VersionID=333
+	SolveSetupID=0
+	$begin 'Profiles'
+		P(VID=167, Ver=333, File='DV167_S163_V333.profile')
+	$end 'Profiles'
+	$begin 'MI'
+	$end 'MI'
+	$begin 'MeshGeomInfo'
+		MGI(VID=167, Ver=333, Dir='DV167_S163_V333_MGI/')
+	$end 'MeshGeomInfo'
+$end 'SolutionBlock18'
+$begin 'SolutionBlock16'
+	SolutionName='AdaptivePass'
+	SolutionID=164
+	V=333
+	$begin 'States'
+	$end 'States'
+	$begin 'Definition'
+		SamplingInterpolation=false
+		Frequencies()
+		SolutionType=1
+		CenterFreq=0
+	$end 'Definition'
+$end 'SolutionBlock16'
+$begin 'SolutionBlock17'
+	SolutionName='LastAdaptive'
+	SolutionID=165
+	V=333
+	$begin 'States'
+	$end 'States'
+	$begin 'Definition'
+		SamplingInterpolation=false
+		Frequencies()
+		SolutionType=1
+		CenterFreq=0
+	$end 'Definition'
+$end 'SolutionBlock17'
+$begin '$index$'
+	$begin '$index$'
+		BlockMapName(pos=890, lin=24, lvl=0)
+		SolutionBlock16(pos=1612, lin=44, lvl=0)
+		SolutionBlock17(pos=1862, lin=57, lvl=0)
+		SolutionBlock18(pos=1284, lin=30, lvl=0)
+		SolutionBlock1(pos=370, lin=1, lvl=0)
+		$base_index$(pos=0, lin=1, lvl=0)
+		$index$(pos=2112, lin=70, lvl=0)
+	$end '$index$'
+$end '$index$'
