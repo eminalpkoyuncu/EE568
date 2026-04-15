@@ -1,13 +1,130 @@
 $begin '$base_index$'
   $begin 'properties'
     all_levels=000000000000
-    time(year=000000002026, month=000000000004, day=000000000015, hour=000000000018, min=000000000040, sec=000000000052)
+    time(year=000000002026, month=000000000004, day=000000000015, hour=000000000018, min=000000000048, sec=000000000024)
     version=000000000000
   $end 'properties'
   $begin '$base_index$'
-    $index$(pos=000000002112, lin=000000000070, lvl=000000000000)
+    $index$(pos=000000003920, lin=000000000141, lvl=000000000000)
   $end '$base_index$'
 $end '$base_index$'
+$begin 'SolutionBlock18'
+	SimSetupID=163
+	SimSetupName='Setup1'
+	VersionID=333
+	SolveSetupID=0
+	$begin 'CurrMeshes'
+		IDDblMap(206, 1, 209, 2, 210, 3)
+		$begin 'DataMap'
+			VID=167
+			Ver=333
+			M(DblID=209, Dir='DV167_S163_V333.cmesh209/')
+			M(DblID=210, Dir='DV167_S163_V333.cmesh210/')
+		$end 'DataMap'
+	$end 'CurrMeshes'
+	$begin 'LastPassNumbers'
+		LP(VID=167, Ver=333, P=2)
+	$end 'LastPassNumbers'
+	$begin 'Profiles'
+		P(VID=167, Ver=333, File='DV167_S163_V333.profile')
+	$end 'Profiles'
+	$begin 'MI'
+		$begin 'SubData'
+			ID=0
+			MI(VID=167, Ver=333, Dir='DV167_S163_MI0_V333.sd/')
+		$end 'SubData'
+	$end 'MI'
+	$begin 'MeshGeomInfo'
+		MGI(VID=167, Ver=333, Dir='DV167_S163_V333_MGI/')
+	$end 'MeshGeomInfo'
+$end 'SolutionBlock18'
+$begin 'BlockMapName'
+	FileHeader='SolutionBlock1'
+	'SolutionKey(SimSetup=163, Instance=\'$theta=\\\'0deg\\\'\', Solution=-3, VersionID=333)'='SolutionBlock19'
+	'SolutionKey(SimSetup=163, Instance=\'SetupDefinition\', Solution=-1, VersionID=333)'='SolutionBlock18'
+	'SolutionKey(SimSetup=163, Instance=\'SolutionDefinition\', Solution=164, VersionID=333)'='SolutionBlock16'
+	'SolutionKey(SimSetup=163, Instance=\'SolutionDefinition\', Solution=165, VersionID=333)'='SolutionBlock17'
+$end 'BlockMapName'
+$begin 'SolutionBlock17'
+	SolutionName='LastAdaptive'
+	SolutionID=165
+	V=333
+	$begin 'States'
+		F(VID=167, Ver=333)
+	$end 'States'
+	$begin 'Definition'
+		SamplingInterpolation=false
+		Frequencies()
+		SolutionType=1
+		CenterFreq=0
+	$end 'Definition'
+	$begin 'Fields'
+		IDDblMap(208, -1)
+		$begin 'DataMap'
+			VID=167
+			Ver=333
+			Field(DblID=208, Dir='DV167_SOL165_V333.Field208/')
+		$end 'DataMap'
+	$end 'Fields'
+	$begin 'PD'
+		NextUniqueID=60
+		MoveBackwards=false
+		$begin 'SubData'
+			ID=0
+			Ver=48
+			PD(VID=167, Ver=48, File='DV167_SOL165_PD0_V48.sd')
+		$end 'SubData'
+		$begin 'SubData'
+			ID=1
+			Ver=48
+			PD(VID=167, Ver=48, File='DV167_SOL165_PD1_V48.sd')
+		$end 'SubData'
+	$end 'PD'
+$end 'SolutionBlock17'
+$begin 'SolutionBlock16'
+	SolutionName='AdaptivePass'
+	SolutionID=164
+	V=333
+	$begin 'States'
+		F(VID=167, Ver=333)
+	$end 'States'
+	$begin 'Definition'
+		SamplingInterpolation=false
+		Frequencies()
+		SolutionType=1
+		CenterFreq=0
+	$end 'Definition'
+	$begin 'PD'
+		NextUniqueID=60
+		MoveBackwards=false
+		$begin 'SubData'
+			ID=0
+			Ver=48
+			PD(VID=167, Ver=48, File='DV167_SOL164_PD0_V48.sd')
+		$end 'SubData'
+		$begin 'SubData'
+			ID=1
+			Ver=48
+			PD(VID=167, Ver=48, File='DV167_SOL164_PD1_V48.sd')
+		$end 'SubData'
+	$end 'PD'
+	$begin 'NFSP'
+		$begin 'SubData'
+			ID=10
+			NFSP(VID=167, Ver=333, File='DV167_SOL164_NFSP10_V333.sd')
+		$end 'SubData'
+	$end 'NFSP'
+$end 'SolutionBlock16'
+$begin 'SolutionBlock19'
+	ConvSetupName='eConv'
+	MaxPasses='10'
+	MinPasses='2'
+	ConvTarget='(1, 1)'
+	ConvTargetConsecPasses='N/A'
+	ConvCurrentConsecPasses='N/A'
+	c(ee=0.4016333542568622, tri=664, te=6.600341787934963, p=1, de_ee='(0.40163, N/A)')
+	c(ee=0.2079055851814365, tri=864, te=6.624265152560531, p=2, de_ee='(0.20791, 0.36246)', de=0.3624564514113252)
+$end 'SolutionBlock19'
 $begin 'SolutionBlock1'
 	ProductName=''
 	CircuitName='Maxwell2DDesign1'
@@ -31,60 +148,15 @@ $begin 'SolutionBlock1'
 		$end 'SubData'
 	$end 'MI'
 $end 'SolutionBlock1'
-$begin 'BlockMapName'
-	FileHeader='SolutionBlock1'
-	'SolutionKey(SimSetup=163, Instance=\'SetupDefinition\', Solution=-1, VersionID=333)'='SolutionBlock18'
-	'SolutionKey(SimSetup=163, Instance=\'SolutionDefinition\', Solution=164, VersionID=333)'='SolutionBlock16'
-	'SolutionKey(SimSetup=163, Instance=\'SolutionDefinition\', Solution=165, VersionID=333)'='SolutionBlock17'
-$end 'BlockMapName'
-$begin 'SolutionBlock18'
-	SimSetupID=163
-	SimSetupName='Setup1'
-	VersionID=333
-	SolveSetupID=0
-	$begin 'Profiles'
-		P(VID=167, Ver=333, File='DV167_S163_V333.profile')
-	$end 'Profiles'
-	$begin 'MI'
-	$end 'MI'
-	$begin 'MeshGeomInfo'
-		MGI(VID=167, Ver=333, Dir='DV167_S163_V333_MGI/')
-	$end 'MeshGeomInfo'
-$end 'SolutionBlock18'
-$begin 'SolutionBlock16'
-	SolutionName='AdaptivePass'
-	SolutionID=164
-	V=333
-	$begin 'States'
-	$end 'States'
-	$begin 'Definition'
-		SamplingInterpolation=false
-		Frequencies()
-		SolutionType=1
-		CenterFreq=0
-	$end 'Definition'
-$end 'SolutionBlock16'
-$begin 'SolutionBlock17'
-	SolutionName='LastAdaptive'
-	SolutionID=165
-	V=333
-	$begin 'States'
-	$end 'States'
-	$begin 'Definition'
-		SamplingInterpolation=false
-		Frequencies()
-		SolutionType=1
-		CenterFreq=0
-	$end 'Definition'
-$end 'SolutionBlock17'
 $begin '$index$'
 	$begin '$index$'
-		BlockMapName(pos=890, lin=24, lvl=0)
-		SolutionBlock16(pos=1612, lin=44, lvl=0)
-		SolutionBlock17(pos=1862, lin=57, lvl=0)
-		SolutionBlock18(pos=1284, lin=30, lvl=0)
-		SolutionBlock1(pos=370, lin=1, lvl=0)
+		SolutionBlock1(pos=3400, lin=118, lvl=0)
+		BlockMapName(pos=1106, lin=31, lvl=0)
+		SolutionBlock19(pos=3017, lin=108, lvl=0)
+		SolutionBlock16(pos=2328, lin=74, lvl=0)
+		SolutionBlock17(pos=1609, lin=38, lvl=0)
+		SolutionBlock18(pos=370, lin=1, lvl=0)
 		$base_index$(pos=0, lin=1, lvl=0)
-		$index$(pos=2112, lin=70, lvl=0)
+		$index$(pos=3920, lin=141, lvl=0)
 	$end '$index$'
 $end '$index$'
