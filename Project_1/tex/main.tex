@@ -21,7 +21,11 @@
 % ------------------------------------------------------------------------------
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
-\blindtext[1] % creates dummy text
+
+In this project, the magnetostatic analysis is conducted on a system that consists of a simple C-core stator and a variable reluctance rotor (i.e. plunger). For this system, first the inductance and torque expressions are analytically derived. For this derivation, it is assumed that the reluctance of the system changes sinusoidally, which is a very strong assumption for such a system. After the analytical derivations, the resulting expressions are plotted and given in the report. Then, the system is modeled on a FEA software, which is selected as Ansys Maxwell 2D and the modeling procedure is explained. After the modelling, the system is simulated using a linear material without any saturation or hysteresis. The resulting flux density vectors in the system are plotted and shown for three different plunger configurations. Also, the inductance and stored energy in the system are calculated for these three configurations and presented. Additionally, the variation of inductance, stored energy and torque acting on plunger as the plunger rotates are also presented in this report. Then, the same analysis is conducted with a nonlinear material. The results of the FEA simulation is discussed, especially the the effects of the non-idealities. The FEA results are then compared with the analytical results and the possible sources of the discrepancies are pointed out. Finally, a current control method to establish continuous rotation of the plunger is proposed. The flux density animation of the FEA results are presented in the GitHub repo. 
+
+\newpage
+
 \section*{Analytical Modelling}
 \addcontentsline{toc}{section}{Analytical Modelling}
 
@@ -156,56 +160,259 @@ The following model improvements can be made to improve the accuracy of the anal
     \item We can also represent the nonlinear behavior of the permeability by taking it as a function of excitation. In this case, the torque expression also depends on the derivative of the excitation current. 
 \end{itemize}
 
-
+\newpage
 
 
 \section*{FEA Modelling (2D - Linear Materials)}
 \addcontentsline{toc}{section}{FEA Modelling (2D - Linear Materials)}
-\blindtext[1] % creates dummy text
-
+For the FEA simulation of the system, I used Ansys Maxwell with Student License. The simulation setup and results are presented in the following sections.
 
 \subsection*{Geometry}
 \addcontentsline{toc}{subsection}{Geometry}
+
+The following geometry given in Figure \ref{fig:4} is used to simulate the system in Ansys Maxwell.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Result_Image/Geom_edited.png}
+    \caption{Geometry of the System.}
+    \label{fig:4}
+\end{figure}
+
+In this geometry, I replicated the given geometry in the project definition. In this geometry,
+
+\begin{enumerate}
+    \item A is the cross section of the coil which has a current in the direction of +z direction.
+    \item B is the cross section of the coil which has a current in the direction of -z direction (return path of the current).
+    \item C is the main frame of the magnetic core.
+    \item D is the ferromagnetic plunger.
+    \item E is the surrounding air and the air gap.
+\end{enumerate}
+
 \subsection*{Meshing}
 \addcontentsline{toc}{subsection}{Meshing}
+For the meshing, I used the Maxwell curved meshing tool with the coarser setting for the meshing of everything except the air gap zone. For the air gap zone, I used a maximum mesh size of 2mm using mesh operations tool. I set the mesh refinement per pass to \%30 and minimum number of passes to 5 for adaptive mesh refinement of Ansys. The resulting mesh geometry is given in Figures \ref{fig:5} and \ref{fig:6}. Note that, since Ansys Student License allows for a maximum of 2000 cells, I could not refine the mesh further.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Result_Image/mesh1.JPG}
+    \caption{Overall Mesh Structure.}
+    \label{fig:5}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Result_Image/mesh2.JPG}
+    \caption{Resulting Mesh Around the Air Gap.}
+    \label{fig:6}
+\end{figure}
+
 \subsection*{Boundary Conditions}
 \addcontentsline{toc}{subsection}{Boundary Conditions}
+As the boundary conditions, I set regions A and B of Figure \ref{fig:4} as "coil" with 300 turns, and A in positive and B in negative directions. I set the material for these regions as "copper". Then, I created a "winding" using A and B coils and set the current as 2.5 Amperes. I set the material for regions C and D as "ferrite" with a linear permeability of $\mu_r=1000$. I created a project parameter $\theta$ as the orientation of the plunger using the "rotate" command. I set the initial $\theta = 0$ value as the the shown configuration in Figure \ref{fig:4} and created an Optimetric analysis setup to sweep the parameter $\theta$ to obtain results for different orientations of the plunger. I set the material for zone E as air and set the "Balloon" boundary condition.
+
 \subsection*{Solver Settings}
 \addcontentsline{toc}{subsection}{Solver Settings}
+I used the default solver settings for Ansys Maxwell 2D except for the mesh refinement settings mentioned before. 
+
 
 \subsection*{Results}
 \addcontentsline{toc}{subsection}{Results}
+
+Conducting the Optimetric analysis, I obtained the following results. 
+
 \subsubsection*{Flux Density Vectors for $\theta=\{0^0,45^0,90^0\}$}
 \addcontentsline{toc}{subsubsection}{Flux Density Vectors for $\theta=\{0^0,45^0,90^0\}$}
+
+The following Flux Density Vectors are obtained in the geometry given in Figures \ref{fig:7}, \ref{fig:8} and \ref{fig:9} for $\theta = 0^0$, $\theta = 45^0$ and $\theta = 90^0$, respectively. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Result_Image/0degflux.JPG}
+    \caption{Flux Density Vectors for $\theta = 0^0$.}
+    \label{fig:7}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Result_Image/45degflux.JPG}
+    \caption{Flux Density Vectors for $\theta = 45^0$.}
+    \label{fig:8}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Result_Image/90degflux.JPG}
+    \caption{Flux Density Vectors for $\theta = 90^0$.}
+    \label{fig:9}
+\end{figure}
+
+From the figures, we can see that the flux density vectors are mostly aligned with the minimum reluctance path as seen from $\theta = 45^0$ case. Also, the flux density decreases considerably when the air gap gets wider (increased reluctance). The fringing effects are increased when the plunger is not aligned with the core perfectly. Finally, we can see that the maximum flux density occurs near the inner corners of the core since the flux path is shortest at the inner segment of the core. 
+
 \subsubsection*{Inductance and Stored Energy for $\theta=\{0^0,45^0,90^0\}$}
 \addcontentsline{toc}{subsubsection}{Inductance and Stored Energy for $\theta=\{0^0,45^0,90^0\}$}
+For this part, I swept the parameter $\theta$ from 0 degrees to 180 degrees to create an inductance plot similar to the analytical calculations. The plot is given in Figure \ref{fig:10}. I also did the same for the stored energy and it is given in Figure \ref{fig:11}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Images/Ind_Var_Lin_Maxwell.eps}
+    \caption{Inductance of the System as $\theta$ Varies.}
+    \label{fig:10}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Images/E_Var_Lin_Maxwell.eps}
+    \caption{Stored Energy of the System as $\theta$ Varies.}
+    \label{fig:11}
+\end{figure}
+
+\newpage
+From the analysis, I obtained the following numerical results. 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lll}
+$\theta$ & $L \; [mH]$ & $E \; [J]$ \\
+$0^0$    & 53.3        & 6.66       \\
+$45^0$   & 35.76       & 4.47       \\
+$90^0$   & 18.97       & 2.37      
+\end{tabular}
+\caption{Numerical Results from FEA Analysis.}
+\end{table}
+
+The inductance figure from FEA and analytical calculation are not exactly the same due to the fringing effects and the FEA result includes the inductance contribution from all parts of the system, including the coil and the surrounding. Also, the numerical inductance values from FEA a bit higher than the analytical results since it also includes the stored energy in the surroundings and the coils. 
+
 \subsubsection*{Torque Generated in the System}
 \addcontentsline{toc}{subsubsection}{Torque Generated in the System}
 
+The torque on the plunger as the plunger rotates is obtained as Figure \ref{fig:12}.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/T_Var_Lin_Maxwell.eps}
+    \caption{Torque on the Plunger as $\theta$ Varies.}
+    \label{fig:12}
+\end{figure}
+
+The maximum and minimum values of the torque calculated using FEA are close to the one calculated analytically, but the FEA result shows a lower maximum-minimum torque than the analytical calculations. This fact might be the result of non-ideal effects and losses (like fringing losses) on the system. On the other hand, the shape of the torque plot is very different than the analytical result. In the analytical calculation, I assumed only the air gap distance changes as the plunger rotates. However, as the plunger rotates, the effective air gap area also changes and this might be the cause of the difference in the torque plots. Also, we observe a very high torque ripple in the torque characteristics. Finally, the net torque per one rotation is zero, as expected. 
+
+\newpage
 \section*{FEA Modelling (2D - Nonlinear Materials)}
 \addcontentsline{toc}{section}{FEA Modelling (2D - Nonlinear Materials)}
-\blindtext[1] % creates dummy text
+
+In this part, I used the same FEA setup as the Linear Materials part, the only change I made is to change the material for C and D zones of Figure \ref{fig:4} from "ferrite" to "mu\_metal" from Maxwell material library. The properties of this material are given in Figure \ref{fig:13}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Result_Image/material.JPG}
+    \caption{The Nonlinear Material Properties Used in FEA.}
+    \label{fig:13}
+\end{figure}
+
+From the figure, we can see that the nonlinear material saturates at near $B=0.6\;T$. 
 
 \subsection*{Results}
 \addcontentsline{toc}{subsection}{Results}
+
 \subsubsection*{Flux Density Vectors for $\theta=\{0^0,45^0,90^0\}$}
 \addcontentsline{toc}{subsubsection}{Flux Density Vectors for $\theta=\{0^0,45^0,90^0\}$}
+The following Flux Density Vectors are obtained in the geometry given in Figures \ref{fig:14}, \ref{fig:15} and \ref{fig:16} for $\theta = 0^0$, $\theta = 45^0$ and $\theta = 90^0$, respectively, using the nonlinear material. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Result_Image/0degflux_sat.JPG}
+    \caption{Flux Density Vectors for $\theta = 0^0$ with Nonlinear Material.}
+    \label{fig:14}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Result_Image/45deg_flux_sat.JPG}
+    \caption{Flux Density Vectors for $\theta = 45^0$ with Nonlinear Material.}
+    \label{fig:15}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Result_Image/90degflux_sat.JPG}
+    \caption{Flux Density Vectors for $\theta = 90^0$ with Nonlinear Material.}
+    \label{fig:16}
+\end{figure}
+
+At $\theta=0^0$ configuration, we can see the effect of saturation. Compared to the linear material case, we have a significantly lower flux density values in the middle of the core and this value is very close to the saturation point of the material.
+\newpage 
 \subsubsection*{Inductance and Stored Energy for $\theta=\{0^0,45^0,90^0\}$}
 \addcontentsline{toc}{subsubsection}{Inductance and Stored Energy for $\theta=\{0^0,45^0,90^0\}$}
+
+For the inductance and the stored energy, I obtained the following plots given in Figures \ref{fig:17} and \ref{fig:18} after sweeping $\theta$ from 0 degrees to 180 degrees.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/Ind_Var_NonLin_Maxwell.eps}
+    \caption{Inductance of the System as $\theta$ Varies for Nonlinear Material.}
+    \label{fig:17}
+\end{figure}
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Images/E_Var_NonLin_Maxwell.eps}
+    \caption{Stored Energy of the System as $\theta$ Varies for Nonlinear Material.}
+    \label{fig:18}
+\end{figure}
+
+From the analysis, I obtained the following numerical results. 
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lll}
+$\theta$ & $L \; [mH]$ & $E \; [J]$ \\
+$0^0$    & 30.83        & 1.89       \\
+$45^0$   & 28.51       & 2.80       \\
+$90^0$   & 20.05      & 2.50      
+\end{tabular}
+\caption{Numerical Results from FEA Analysis with Nonlinear Material.}
+\end{table}
+
+The effect of saturation can be seen clearly from the inductance plot. The plot gets flat when the core is saturated. Also, the inductance decreases nearly 1.5 times in the linear case between 0 degrees and 45 degrees. On the other hand, it stays nearly the same in the nonlinear case due to the saturation, which is also a sign of the saturation. For the stored energy, the shape of the plot completely changes and the maximum stored energy occurs at 45 degrees instead of 0 degrees. This might be the cause of the non-ideal effects acting on the system like the hysteresis. Since the material has a relatively low saturation point, the non-ideal effects might become very significant and change the shape of the plot. The value of lowest inductance and stored energy are also different between the linear and the nonlinear cases since the permeability of the nonlinear material in the linear region is also different from the ferrite material used in the previous case. 
+
 \subsubsection*{Torque Generated in the System}
 \addcontentsline{toc}{subsubsection}{Torque Generated in the System}
+
+The torque on the plunger as the plunger rotates for the nonlinear case is obtained as Figure \ref{fig:19}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/T_Var_NonLin_Maxwell.eps}
+    \caption{Torque on the Plunger as $\theta$ Varies with Nonlinear Material.}
+    \label{fig:19}
+\end{figure}
+
+Due to the saturation of the core, the rate of change of the inductance as $\theta$ varies decreases as seen from the inductance plot. We know that the torque is directly related to the rate of change of the inductance and hence, we obtain a smaller maximum-minimum torque with the nonlinear material. Again, we have a high torque ripple and the net torque adds up to zero in this case, too.
+
+\newpage
 
 \section*{Control Method}
 \addcontentsline{toc}{section}{Control Method}
-\blindtext[1] % creates dummy text
+To achieve a continuous rotation with this system, we need a net torque acting on the system as it mate a full rotation. So, I proposed to use a on-off strategy on the DC current. In this case, I turned on the current on the negative torque region of the plunger (i.e. $\theta\in [0^0,90^0]\cup [180^0,270^0]$) and turned it off on the positive torque region. The resultant current and torque waveforms are given in Figure \ref{fig:20}.
 
-\section*{Conclusion}
-\addcontentsline{toc}{section}{Conclusion}
-\blindtext[1] % creates dummy text
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/ControlledResult.eps}
+    \caption{Current and Torque Variations for the Controlled Case.}
+    \label{fig:20}
+\end{figure}
 
-\addcontentsline{toc}{section}{References}
-\renewcommand\bibname{References}
-\printbibliography
+From the result, we can see that we achieve a net torque acting on the plunger as it makes a full rotation. The torque is negative due to the sign convention I used in the FEA. From the result we can see that such a control method results in very large zero torque regions and torque ripple since we are not able to utilize half of the period to create torque. Finally, such a system has no way to self-start and it needs an initial torque for starting to rotate.
+
+\section*{Bonus-I (Motion Animation)}
+\addcontentsline{toc}{section}{Bonus-I (Motion Animation)}
+
+The animations of the motion for linear, nonlinear and controlled cases are commited to the project repo as .gif files. 
+
 
 \end{document}
