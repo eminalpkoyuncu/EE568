@@ -1,0 +1,495 @@
+\documentclass[11pt]{report} 
+
+\usepackage{projectreport}
+\setcounter{tocdepth}{3}
+\newcommand{\name}{Eminalp Koyuncu - 2307882}
+\newcommand{\course}{EE568 - Selected Topics on Electrical Machines}
+\newcommand{\projecttitle}{Project-2: Motor Winding Design and Analysis}
+\newcommand{\submissiondate}{May 2026}
+
+
+% ------------------------------------------------------------------------------
+% Document
+% ------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+% ------------------------------------------------------------------------------
+% Top matter
+% ------------------------------------------------------------------------------
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+
+
+\newpage
+
+\section*{Integral Slot Winding Design}
+\addcontentsline{toc}{section}{Integral Slot Winding Design}
+
+In this section, the winding design is conducted for two different integer-slot winding 72 slots, 6 pole and 3 phase machines, one for the full-pitched winding case and one for 11/12 short pitched case. 
+
+\subsection*{Full-Pitched Winding}
+In this section, the winding of 72 slot, 6 pole, 3 phase machine designed with full-pitched coils.
+
+\addcontentsline{toc}{subsection}{Full-Pitched Winding}
+
+For the given configuration, we first calculate the number of slots per pole per phase.
+
+\begin{equation}
+    Q = 72 \;\text{slots}
+\end{equation}
+\begin{equation}
+    p = 6 \;\text{poles}
+\end{equation}
+\begin{equation}
+    m = 3 \;\text{phases}
+\end{equation}
+\begin{equation}
+    q = \frac{Q}{pm} = \frac{72}{6*3} = 4 \;\text{slots per pole per phase} 
+\end{equation}
+
+Also, we can find the electrical slot angle as,
+
+\begin{equation}
+    \alpha_u= \frac{360^\circ}{Q/(p/2)}=\frac{360^\circ}{72/3}=15^\circ
+\end{equation}
+
+So, each successive slot has a relative phase angle of $15^\circ$. If we denote the slot index by $i$, then, slot $i$ has a phase angle of $(i-1)*15^\circ$. Also, we know that each pole occupies 4 slots. If we place phase $A_{1+}$ to slot $i=1$ (0 degrees), then we should place phase $A_{1-}$ at an electrical phase of $180^\circ$, sice we have a full-pitch winding. Since the electrical slot angle is $15^\circ$, we should place the return line $A_{1-}$ at slot $i = (180/15)=13$. With the same logic, we can find the slot placement of each of the phases. The winding diagram in this case is given in \ref{tab:fullpitch}.
+
+
+\begin{landscape}
+
+
+
+\subsubsection*{Winding Diagram Layout}
+\addcontentsline{toc}{subsubsection}{Winding Diagram Layout}
+\thispagestyle{empty}
+
+\vspace*{\fill}
+
+\begin{center}
+\resizebox{1.6\textwidth}{!}{
+    \begin{tabular}{c|*{24}{c|}}
+    Slot & 1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18&19&20&21&22&23&24 \\
+    Angle& $0^\circ$&$15^\circ$&$30^\circ$&$45^\circ$&$60^\circ$&$75^\circ$&$90^\circ$&$105^\circ$&$120^\circ$&$135^\circ$&$150^\circ$&$165^\circ$&$180^\circ$&$195^\circ$&$210^\circ$&$225^\circ$&$240^\circ$&$255^\circ$&$270^\circ$&$285^\circ$&$300^\circ$&$315^\circ$&$330^\circ$&$345^\circ$\\
+
+    &
+    \cellcolor{red!20}$A_{1+}$&
+    \cellcolor{red!20}$A_{2+}$&
+    \cellcolor{red!20}$A_{3+}$&
+    \cellcolor{red!20}$A_{4+}$&
+    \cellcolor{blue!20}$C_{5-}$&
+    \cellcolor{blue!20}$C_{6-}$&
+    \cellcolor{blue!20}$C_{7-}$&
+    \cellcolor{blue!20}$C_{8-}$&
+    \cellcolor{green!20}$B_{1+}$&
+    \cellcolor{green!20}$B_{2+}$&
+    \cellcolor{green!20}$B_{3+}$&
+    \cellcolor{green!20}$B_{4+}$&
+    \cellcolor{red!20}$A_{5-}$&
+    \cellcolor{red!20}$A_{6-}$&
+    \cellcolor{red!20}$A_{7-}$&
+    \cellcolor{red!20}$A_{8-}$&
+    \cellcolor{blue!20}$C_{1+}$&
+    \cellcolor{blue!20}$C_{2+}$&
+    \cellcolor{blue!20}$C_{3+}$&
+    \cellcolor{blue!20}$C_{4+}$&
+    \cellcolor{green!20}$B_{5-}$&
+    \cellcolor{green!20}$B_{6-}$&
+    \cellcolor{green!20}$B_{7-}$&
+    \cellcolor{green!20}$B_{8-}$ \\
+
+    &
+    \cellcolor{red!20}$A_{5+}$&
+    \cellcolor{red!20}$A_{6+}$&
+    \cellcolor{red!20}$A_{7+}$&
+    \cellcolor{red!20}$A_{8+}$&
+    \cellcolor{blue!20}$C_{1-}$&
+    \cellcolor{blue!20}$C_{2-}$&
+    \cellcolor{blue!20}$C_{3-}$&
+    \cellcolor{blue!20}$C_{4-}$&
+    \cellcolor{green!20}$B_{5+}$&
+    \cellcolor{green!20}$B_{6+}$&
+    \cellcolor{green!20}$B_{7+}$&
+    \cellcolor{green!20}$B_{8+}$&
+    \cellcolor{red!20}$A_{1-}$&
+    \cellcolor{red!20}$A_{2-}$&
+    \cellcolor{red!20}$A_{3-}$&
+    \cellcolor{red!20}$A_{4-}$&
+    \cellcolor{blue!20}$C_{5+}$&
+    \cellcolor{blue!20}$C_{6+}$&
+    \cellcolor{blue!20}$C_{7+}$&
+    \cellcolor{blue!20}$C_{8+}$&
+    \cellcolor{green!20}$B_{1-}$&
+    \cellcolor{green!20}$B_{2-}$&
+    \cellcolor{green!20}$B_{3-}$&
+    \cellcolor{green!20}$B_{4-}$ \\
+    \end{tabular}
+}
+
+\captionof{table}{Winding Diagram for the Full-Pitched Integer Slot Winding Design}
+\label{tab:fullpitch}
+\end{center}
+
+\fillandplacepagenumber
+
+\end{landscape}
+
+\subsubsection*{Distribution Factor, Pitch Factor and Winding Factor}
+\addcontentsline{toc}{subsubsection}{Distribution Factor, Pitch Factor and Winding Factor}
+
+The distribution factor for $n'th$ harmonic can be calculated as follows.
+\begin{equation}
+k_{d}(n)=\frac{\sin{(qn\frac{\alpha_u}{2})}}{q\sin{(n\frac{\alpha_u}{2})}}
+\end{equation}
+Also, the pitch factor for $n'th$ harmonic can be calculated as follows. 
+
+\begin{equation}
+    k_p(n)=\sin{(n\frac{\lambda}{2})}
+\end{equation}
+
+In these equations, $n$ is the harmonic number and $\lambda$ is the coil pitch. In the full pitch case, we have $k_p = 1$ for all the harmonics since $\lambda=180^\circ$. The distribution factor for the fundamental component, $3^{rd}$ and $5^{th}$ components can be calculated as follows.
+
+\begin{equation}
+k_{d}(1)=\frac{\sin{(4*\frac{20^\circ}{2})}}{4\sin{(\frac{20^\circ}{2})}} = 0.925
+\end{equation}
+
+\begin{equation}
+k_{d}(3)=\frac{\sin{(4*3*\frac{20^\circ}{2})}}{4*\sin{(3\frac{\alpha_u}{2})}} = 0.433
+\end{equation}
+
+\begin{equation}
+k_{d}(5)=\frac{\sin{(4*5*\frac{20^\circ}{2})}}{4\sin{(5*\frac{20^\circ}{2})}} = -0.112
+\end{equation}
+
+Thus, the winding factor $k_w = k_d*k_p$ for the fundamental, $3^{rd}$ and $5^{th}$ components can be calculated as follows.
+
+\begin{equation}
+    k_w(1) = 0.925
+\end{equation}
+
+\begin{equation}
+    k_w(3) = 0.433 
+\end{equation}
+
+\begin{equation}
+    k_w(5) = -0.112 
+\end{equation}
+
+
+
+
+\subsubsection*{Comments}
+\addcontentsline{toc}{subsubsection}{Comments}
+
+From the winding factor, the distributed coil causes to drop the effect of $3^{rd}$ harmonic to 43.3\% of its magnitude and $5^{th}$ harmonic to 11.2\% with a phase difference of $180^\circ$ due to the minus sign. The tradeoff is that the fundamental component magnitude drops to its 92.5\% due to the effect of the distribution. In this case, we have no effect of the coil pitch on the winding factor since the coil is full-pitch. The winding factor can be better (lower for the harmonics) with the introduction of the short-pitch winding. 
+
+
+\subsection*{11/12 Short-Pitched Winding}
+\addcontentsline{toc}{subsection}{11/12 Short-Pitched Winding}
+
+For the short-pitch case, the slot angle and the number of slots per pole per phase is the same as the full-pitch case. The only difference is the coil pitch, which can be calculated as,
+
+\begin{equation}
+    \lambda=\frac{11}{12}*180^\circ=165^\circ
+\end{equation}
+
+So, the return line of each coil is phase shifted $165^\circ$ electrically. We know the slot angle is $15^\circ$, so, if we place phase $A_{1+}$ to slot $i=1$, then we should place the return line $A_{1-}$ to slot $i=(165/15) +1=12$. With a similar logic for other phases, we obtain the winding diagram given in \ref{tab:shortpitch}.
+
+
+
+\begin{landscape}
+
+\subsubsection*{Winding Diagram Layout}
+\addcontentsline{toc}{subsubsection}{Winding Diagram Layout}
+\thispagestyle{empty}
+
+\vspace*{\fill}
+
+\begin{center}
+\resizebox{1.6\textwidth}{!}{
+    \begin{tabular}{c|*{24}{c|}}
+    Slot & 1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18&19&20&21&22&23&24 \\
+    Angle& $0^\circ$&$15^\circ$&$30^\circ$&$45^\circ$&$60^\circ$&$75^\circ$&$90^\circ$&$105^\circ$&$120^\circ$&$135^\circ$&$150^\circ$&$165^\circ$&$180^\circ$&$195^\circ$&$210^\circ$&$225^\circ$&$240^\circ$&$255^\circ$&$270^\circ$&$285^\circ$&$300^\circ$&$315^\circ$&$330^\circ$&$345^\circ$\\
+
+    &
+    \cellcolor{red!20}$A_{1+}$&
+    \cellcolor{red!20}$A_{2+}$&
+    \cellcolor{red!20}$A_{3+}$&
+    \cellcolor{red!20}$A_{4+}$&
+    \cellcolor{blue!20}$C_{5-}$&
+    \cellcolor{blue!20}$C_{6-}$&
+    \cellcolor{blue!20}$C_{7-}$&
+    \cellcolor{blue!20}$C_{8-}$&
+    \cellcolor{green!20}$B_{1+}$&
+    \cellcolor{green!20}$B_{2+}$&
+    \cellcolor{green!20}$B_{3+}$&
+    \cellcolor{green!20}$B_{4+}$&
+    \cellcolor{red!20}$A_{5-}$&
+    \cellcolor{red!20}$A_{6-}$&
+    \cellcolor{red!20}$A_{7-}$&
+    \cellcolor{red!20}$A_{8-}$&
+    \cellcolor{blue!20}$C_{1+}$&
+    \cellcolor{blue!20}$C_{2+}$&
+    \cellcolor{blue!20}$C_{3+}$&
+    \cellcolor{blue!20}$C_{4+}$&
+    \cellcolor{green!20}$B_{5-}$&
+    \cellcolor{green!20}$B_{6-}$&
+    \cellcolor{green!20}$B_{7-}$&
+    \cellcolor{green!20}$B_{8-}$ \\
+
+    &
+    \cellcolor{red!20}$A_{6+}$&
+    \cellcolor{red!20}$A_{7+}$&
+    \cellcolor{red!20}$A_{8+}$&
+    \cellcolor{blue!20}$C_{1-}$&
+    \cellcolor{blue!20}$C_{2-}$&
+    \cellcolor{blue!20}$C_{3-}$&
+    \cellcolor{blue!20}$C_{4-}$&
+    \cellcolor{green!20}$B_{5+}$&
+    \cellcolor{green!20}$B_{6+}$&
+    \cellcolor{green!20}$B_{7+}$&
+    \cellcolor{green!20}$B_{8+}$&
+    \cellcolor{red!20}$A_{1-}$&
+    \cellcolor{red!20}$A_{2-}$&
+    \cellcolor{red!20}$A_{3-}$&
+    \cellcolor{red!20}$A_{4-}$&
+    \cellcolor{blue!20}$C_{5+}$&
+    \cellcolor{blue!20}$C_{6+}$&
+    \cellcolor{blue!20}$C_{7+}$&
+    \cellcolor{blue!20}$C_{8+}$&
+    \cellcolor{green!20}$B_{1-}$&
+    \cellcolor{green!20}$B_{2-}$&
+    \cellcolor{green!20}$B_{3-}$&
+    \cellcolor{green!20}$B_{4-}$& 
+    \cellcolor{red!20}$A_{8+}$ \\
+    \end{tabular}
+}
+
+\captionof{table}{Winding Diagram for the 11/12 Short-Pitched Integer Slot Winding Design}
+\label{tab:shortpitch}
+\end{center}
+
+\fillandplacepagenumber
+
+\end{landscape}
+
+
+
+\subsubsection*{Distribution Factor, Pitch Factor and Winding Factor}
+
+\addcontentsline{toc}{subsubsection}{Distribution Factor, Pitch Factor and Winding Factor}
+
+In this case, the distribution factor is the same as the full-pitch case since the number of slots per pole per phase is the same. 
+
+\begin{equation}
+k_{d}(1)=\frac{\sin{(4*\frac{20^\circ}{2})}}{4\sin{(\frac{20^\circ}{2})}} = 0.925
+\end{equation}
+
+\begin{equation}
+k_{d}(3)=\frac{\sin{(4*3*\frac{20^\circ}{2})}}{4*\sin{(3\frac{\alpha_u}{2})}} = 0.433
+\end{equation}
+
+\begin{equation}
+k_{d}(5)=\frac{\sin{(4*5*\frac{20^\circ}{2})}}{4\sin{(5*\frac{20^\circ}{2})}} = -0.112
+\end{equation}
+
+The difference comes from the pitch factor.
+
+
+\begin{equation}
+    k_p(1)=\sin{(\frac{165^\circ}{2})}=0.991
+\end{equation}
+
+
+\begin{equation}
+    k_p(3)=\sin{(3\frac{165^\circ}{2})}=-0.924
+\end{equation}
+
+
+\begin{equation}
+    k_p(5)=\sin{(5\frac{165^\circ}{2})}=0.793
+\end{equation}
+
+Hence, the winding factors for the fundamental, $3^{rd}$ and $5^{th}$ components become,
+
+\begin{equation}
+    k_w(1) = 0.925*0.991=0.917
+\end{equation}
+
+\begin{equation}
+    k_w(3) = 0.433 *(-0.924)=-0.400
+\end{equation}
+
+\begin{equation}
+    k_w(5) = (-0.112)*0.793= -0.089
+\end{equation}
+
+
+
+\subsubsection*{Comments}
+\addcontentsline{toc}{subsubsection}{Comments}
+
+In this case, utilizing the short-pitch winding, we obtain a better performance in terms of the harmonics rejection, with a very small loss in the fundamental component. Also, with the short pitch winding, a phase difference of $180^\circ$ is added on the third harmonic. 
+
+
+
+\section*{Fractional-Slot Winding Design for Reference Design 2}
+\addcontentsline{toc}{section}{Fractional-Slot Winding Design for Reference Design 2}
+
+\subsection*{Phase Angle of Induced Voltage in Each Slot}
+\addcontentsline{toc}{subsection}{Phase Angle of Induced Voltage in Each Slot}
+
+\subsection*{Phasor Diagram for One Phase and Winding Factor}
+\addcontentsline{toc}{subsection}{Phasor Diagram for One Phase and Winding Factor}
+
+\subsection*{Complete Winding Diagram}
+\addcontentsline{toc}{subsection}{Complete Winding Diagram}
+
+\begin{landscape}
+\thispagestyle{empty}
+
+\vspace*{\fill}
+
+\begin{center}
+\resizebox{1.6\textwidth}{!}{
+    \begin{tabular}{c|*{15}{c|}}
+    Slot & 1&2&3&4&5&6&7&8&9&10&11&12&13&14&15 \\
+    Angle& $0^\circ$&$120^\circ$&$240^\circ$&$0^\circ$&$120^\circ$&$240^\circ$&$0^\circ$&$120^\circ$&$240^\circ$&$0^\circ$&$120^\circ$&$240^\circ$&$0^\circ$&$120^\circ$&$240^\circ$\\
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{green!20}$B_{5-}$ & \cellcolor{red!20}$A_{1+}$ 
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{red!20}$A_{1-}$ & \cellcolor{blue!20}$C_{1+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{blue!20}$C_{1-}$ & \cellcolor{green!20}$B_{1+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{green!20}$B_{1-}$ & \cellcolor{red!20}$A_{2+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{red!20}$A_{2-}$ & \cellcolor{blue!20}$C_{2+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{blue!20}$C_{2-}$ & \cellcolor{green!20}$B_{2+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{green!20}$B_{2-}$ & \cellcolor{red!20}$A_{3+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{red!20}$A_{3-}$ & \cellcolor{blue!20}$C_{3+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{blue!20}$C_{3-}$ & \cellcolor{green!20}$B_{3+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{green!20}$B_{3-}$ & \cellcolor{red!20}$A_{4+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{red!20}$A_{4-}$ & \cellcolor{blue!20}$C_{4+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{blue!20}$C_{4-}$ & \cellcolor{green!20}$B_{4+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{green!20}$B_{4-}$ & \cellcolor{red!20}$A_{5+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{red!20}$A_{5-}$ & \cellcolor{blue!20}$C_{5+}$
+    \end{tabular}
+    &
+    \begin{tabular}{@{}c|c@{}}
+        \cellcolor{blue!20}$C_{5-}$ & \cellcolor{green!20}$B_{5+}$
+\end{tabular}
+\end{tabular}
+}
+
+\captionof{table}{Winding Diagram for the Fractional-Slot Winding Design}
+\label{tab:placeholder}
+\end{center}
+
+\fillandplacepagenumber
+
+\end{landscape}
+
+
+\section*{Analytical Modelling}
+\addcontentsline{toc}{section}{Analytical Modelling}
+
+\subsection*{Electrical Loading}
+\addcontentsline{toc}{subsection}{Electrical Loading}
+
+\subsection*{Carter's Coefficient and Effective Air-Gap Clearance}
+\addcontentsline{toc}{subsection}{Carter's Coefficient and Effective Air-Gap Clearance}
+
+\subsection*{Effective Axial Length}
+\addcontentsline{toc}{subsection}{Effective Axial Length}
+
+\subsection*{Air-Gap Peak Magnetic Flux Density}
+\addcontentsline{toc}{subsection}{Air-Gap Peak Magnetic Flux Density}
+
+\subsection*{Magnetic Loading, Specific Machine Constant, Shear Stress and Expected Torque}
+\addcontentsline{toc}{subsection}{Magnetic Loading, Specific Machine Constant, Shear Stress and Expected Torque}
+
+\subsection*{Flux Per Pole}
+\addcontentsline{toc}{subsection}{Flux Per Pole}
+
+
+\section*{2D FEA Modelling}
+\addcontentsline{toc}{section}{2D FEA Modelling}
+
+\subsection*{Geometry}
+\addcontentsline{toc}{subsection}{Geometry}
+
+\subsection*{Meshing}
+\addcontentsline{toc}{subsection}{Meshing}
+
+\subsection*{Boundary Conditions}
+\addcontentsline{toc}{subsection}{Boundary Conditions}
+
+\subsection*{Solver Settings}
+\addcontentsline{toc}{subsection}{Solver Settings}
+
+
+\subsection*{Results}
+\addcontentsline{toc}{subsection}{Results}
+
+\subsubsection*{Flux Density Distribution}
+\addcontentsline{toc}{subsubsection}{Flux Density Distribution}
+
+\subsubsection*{Air-Gap Flux Density Distribution}
+\addcontentsline{toc}{subsubsection}{Air-Gap Flux Density Distribution}
+
+\subsubsection*{Leakage Flux Paths}
+\addcontentsline{toc}{subsubsection}{Leakage Flux Paths}
+
+
+\subsubsection*{Flux-Per-Pole}
+\addcontentsline{toc}{subsubsection}{Flux-Per-Pole}
+
+
+\subsubsection*{Bonus: Cogging Torque}
+\addcontentsline{toc}{subsubsection}{Bonus: Cogging Torque}
+
+
+
+
+\end{document}
